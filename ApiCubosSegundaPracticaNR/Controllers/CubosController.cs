@@ -76,7 +76,6 @@ namespace ApiCubosSegundaPracticaNR.Controllers
         [HttpPost]
         [Authorize]
         [Route("[action]")]
-
         public async Task<ActionResult> InsertPedido(CompraCubo compra)
         {
             await this.repo.InsertPedidoAsync(compra.Id_Cubo, compra.Id_Usario, compra.FechaPedidio);

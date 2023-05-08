@@ -80,13 +80,15 @@ namespace ApiCubosSegundaPracticaNR.Repositories
         }
 
         //metodo realizar un pedido del user
-        public async Task InsertPedidoAsync( int idcub, int iduser, DateTime fecha)
+        public async Task InsertPedidoAsync(int idcub, int iduser, DateTime fecha)
         {
             CompraCubo compra = new CompraCubo();
             compra.Id_Pedido = this.GetMaxIdPedido();
             compra.Id_Cubo = idcub;
             compra.Id_Usario = iduser;
             compra.FechaPedidio = fecha;
+            await this.context.CompraCubos.AddAsync(compra);
+            await this.context.SaveChangesAsync();
         }
         
 
